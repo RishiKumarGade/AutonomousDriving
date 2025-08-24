@@ -1,0 +1,5 @@
+git clone https://github.com/metadriverse/metadrive.git
+cd metadrive
+pip install -e .
+python -m metadrive.pull_asset
+python -m metadrive.examples.verify_headless_installation

@@ -1,0 +1,4 @@
+@echo off
+cd /d "C:\Users\gader\OneDrive\Desktop\MajorProject\V4\complexppo"
+python main.py train --timesteps 100000000 --headless --ci 500000
+exit
