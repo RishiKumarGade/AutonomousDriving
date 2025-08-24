@@ -1,0 +1,2 @@
+python main.py train --timesteps 3000000 --headless --ci 100000 
+python main.py test --model models\ppo_metadrive_latest.zip --live     
