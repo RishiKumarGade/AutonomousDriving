@@ -1,3 +1,2 @@
 python main.py train --timesteps 100000000 --headless --ci 500000
-python main.py train --timesteps 100000000 --headless --ci 500000 --resume .\models\ppo_metadrive_20250818_194725_1000000.zip
 python main.py test --model models/ppo_metadrive_<timestamp>_final.zip --live

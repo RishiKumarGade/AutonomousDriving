@@ -29,7 +29,6 @@ def test(model_path, headless=False, max_episodes=10, deterministic=True):
     cfg = get_base_config(headless=headless)
     env = MetaDriveEnv(cfg)
 
-    # Load model (safe device selection)
     print(f"📂 Loading model from {model_path}")
     model = PPO.load(model_path, env=env, device="cpu")
 
