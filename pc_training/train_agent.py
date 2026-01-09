@@ -17,6 +17,8 @@ def get_base_config(headless=True, decision_repeat=5, max_fps=30):
         shadow_range=0 if headless else 1000,  
         multi_thread_render=True
     )
+
+
 def make_env(rank, headless=True, seed=0):
 
     def _init():
@@ -25,9 +27,10 @@ def make_env(rank, headless=True, seed=0):
         env = MetaDriveEnv(cfg)
         return env
     return _init
+
+
 def train(total_timesteps=50_000_000, headless=True,
           checkpoint_interval=1_000_000, n_envs=8):
-
     save_dir = "models"
     os.makedirs(save_dir, exist_ok=True)
     model_path = os.path.join(save_dir, "ppo_metadrive_latest.zip")
@@ -63,3 +66,23 @@ def train(total_timesteps=50_000_000, headless=True,
     model.save(final_path)
     print(f"✅ Final model saved at {final_path}")
     env.close()
+
+
+def reward_function(self, vehicle_id):
+    vehicle = self.vehicles[vehicle_id]
+    reward = 0.0
+    reward += vehicle.speed * 0.05
+    lane = vehicle.lane
+    if lane is not None:
+        lateral_dist = abs(vehicle.lateral_dist)
+        reward -= lateral_dist * 0.1
+    if vehicle.crash_vehicle:
+        reward -= 10.0
+    if vehicle.crash_object:
+        reward -= 5.0
+    if vehicle.on_yellow_continuous_line or vehicle.on_white_continuous_line:
+        reward -= 2.0
+    reward -= abs(vehicle.steering) * 0.05
+    if vehicle.speed < 0.1:
+        reward -= 0.2
+    return reward
