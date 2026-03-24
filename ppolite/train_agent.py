@@ -53,9 +53,9 @@ def train(total_timesteps=50_000, headless=False, resume_model=None,
             n_epochs=5,            
             clip_range=0.2,
             verbose=1,
-            device="cpu",
+            device="auto",
             policy_kwargs=dict(
-                net_arch=[128, 128]   
+                net_arch=dict(pi=[128, 128], vf=[128, 128])
             ),
         )
 

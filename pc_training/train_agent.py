@@ -51,9 +51,9 @@ def train(total_timesteps=50_000_000, headless=True,
             n_epochs=10,            
             clip_range=0.2,
             verbose=1,
-            device="cpu",
+            device="auto",
             policy_kwargs=dict(
-                net_arch=[256, 256]   
+                net_arch=dict(pi=[256, 256], vf=[256, 256])
             ),
         )
     steps_done = model.num_timesteps

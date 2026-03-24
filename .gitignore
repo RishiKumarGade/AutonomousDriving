@@ -1,1 +1,4 @@
 metadrive/
+__pycache__/
+laptop_training/__pycache__/
+autonomous_env
