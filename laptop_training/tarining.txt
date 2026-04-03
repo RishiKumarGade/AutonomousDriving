@@ -1,3 +1,4 @@
-autonomous_env\Scripts\Activate.ps1
+autonomous_env\Scripts\activate.bat
+cd laptop_training
 python main.py train --timesteps 100000000 --headless --ci 50000
 python main.py test --model models/ppo_metadrive_final.zip
