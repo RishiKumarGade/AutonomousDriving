@@ -30,7 +30,7 @@ def make_env(rank, headless=True, seed=0):
 
 
 def train(total_timesteps=100_000_000, headless=True,
-          checkpoint_interval=1_000_000, n_envs=4):
+          checkpoint_interval=1_000_000, n_envs=1):
 
     save_dir = "models"
     os.makedirs(save_dir, exist_ok=True)
