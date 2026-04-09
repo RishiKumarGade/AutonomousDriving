@@ -26,7 +26,7 @@ def make_env(rank, headless=True, seed=0):
         return env
     return _init
 def train(total_timesteps=50_000_000, headless=True,
-          checkpoint_interval=1_000_000, n_envs=1):
+          checkpoint_interval=1_000_000, n_envs=6):
 
     save_dir = "models"
     os.makedirs(save_dir, exist_ok=True)
